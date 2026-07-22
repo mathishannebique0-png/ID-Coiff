@@ -512,9 +512,9 @@
 
     .services { display: grid; gap: var(--s3); grid-template-columns: 1fr; }
     .service-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-top: 3px solid var(--accent);
+      background: var(--white);                                        /* carte BLANCHE (desktop + mobile) */
+      border: 1px solid color-mix(in srgb, var(--black) 12%, var(--white));
+      border-top: 3px solid var(--accent);                             /* filet doré conservé */
       border-radius: var(--radius);
       padding: clamp(var(--s3), 4vw, var(--s5));
       transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease;
@@ -522,8 +522,8 @@
     .service-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow);
-      border-color: var(--line-strong);
-      border-top-color: var(--accent-ink); /* renforce le filet d'accent au survol */
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--white)); /* liseré doré au survol */
+      border-top-color: var(--accent);
     }
     .service-card__head {
       display: flex; align-items: center; gap: var(--s2);
@@ -574,6 +574,24 @@
       background: var(--accent-wash); border: 1px solid var(--accent-line);
       padding: 4px 9px; border-radius: 999px;
     }
+
+    /* ——— Cartes prestations en BLANC : contenu foncé lisible, touches dorées
+       conservées (prix, badges, icônes, filet). Spécificité « .service-card X »
+       pour l'emporter sur les couleurs du thème sombre. Desktop + mobile. ——— */
+    .service-card .service-card__title,
+    .service-card .price__name { color: color-mix(in srgb, var(--accent) 10%, var(--black)); }
+    .service-card .price__desc,
+    .service-card .price__value small { color: color-mix(in srgb, var(--black) 62%, var(--white)); }
+    .service-card .price__value { color: color-mix(in srgb, var(--accent) 45%, var(--black)); }
+    .service-card .service-card__head { border-bottom-color: color-mix(in srgb, var(--black) 12%, var(--white)); }
+    .service-card .price + .price { border-top-color: color-mix(in srgb, var(--black) 10%, var(--white)); }
+    .service-card .price__dots { border-bottom-color: color-mix(in srgb, var(--black) 24%, var(--white)); }
+    .service-card .service-card__icon,
+    .service-card .badge {
+      background: color-mix(in srgb, var(--accent) 15%, var(--white));
+      color: color-mix(in srgb, var(--accent) 45%, var(--black));
+    }
+    .service-card .badge { border-color: color-mix(in srgb, var(--accent) 38%, var(--white)); }
 
     /* ========================================================================
        9. GALERIE
@@ -780,28 +798,6 @@
       .hero__actions .btn--primary { display: none; }
       .hero__actions .btn--ghost { width: 100%; }
       .hero__meta { margin-top: var(--s4); gap: var(--s1) var(--s3); }
-
-      /* Prestations : CARTES BLANCHES à texte foncé (lisibilité optimale sur le
-         fond noir). Le filet doré du haut et les touches dorées sont conservés. */
-      .service-card {
-        background: var(--white);
-        border-color: color-mix(in srgb, var(--black) 12%, var(--white));
-        border-top-color: var(--accent);
-      }
-      .service-card__title,
-      .service-card .price__name { color: color-mix(in srgb, var(--accent) 10%, var(--black)); }
-      .service-card .price__desc,
-      .service-card .price__value small { color: color-mix(in srgb, var(--black) 62%, var(--white)); }
-      .service-card .price__value { color: color-mix(in srgb, var(--accent) 45%, var(--black)); }
-      .service-card .service-card__head { border-bottom-color: color-mix(in srgb, var(--black) 12%, var(--white)); }
-      .service-card .price + .price { border-top-color: color-mix(in srgb, var(--black) 10%, var(--white)); }
-      .service-card .price__dots { border-bottom-color: color-mix(in srgb, var(--black) 24%, var(--white)); }
-      .service-card__icon,
-      .service-card .badge {
-        background: color-mix(in srgb, var(--accent) 15%, var(--white));
-        color: color-mix(in srgb, var(--accent) 45%, var(--black));
-      }
-      .service-card .badge { border-color: color-mix(in srgb, var(--accent) 38%, var(--white)); }
     }
 
     /* ≥ 600px : galerie et équipe sur 2 colonnes */

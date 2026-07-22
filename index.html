@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  ID'coiff — Salon de coiffure & barbier · Amiens
+  Maquette de présentation (page unique, 100 % autonome).
+  Aucune dépendance externe : tout le CSS et le JS sont inclus ci-dessous.
+  Déployable tel quel (Vercel, Netlify, o2switch, simple hébergement statique…).
+  ----------------------------------------------------------------------------
+  COMMENT PERSONNALISER / DUPLIQUER CETTE MAQUETTE
+  1. Couleurs   → bloc « COULEURS DE LA MARQUE » dans le <style> (2 valeurs).
+  2. Coordonnées→ recherchez les marqueurs [ ... ] et remplacez-les.
+  3. Lien RDV   → remplacez tous les « [LIEN PLANITY] » par l'URL Planity réelle.
+  4. Photos     → remplacez chaque bloc .photo (marqué [PHOTO À FOURNIR])
+                  par une <img> ou un fond ; le cadre reste identique.
+  Les sections sont délimitées par des commentaires « ===== SECTION ===== ».
+  ============================================================================
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===================== SEO LOCAL ===================== -->
+  <title>ID'coiff — Salon de coiffure & barbier à Amiens | Coupe, couleur, barbe</title>
+  <meta name="description" content="ID'coiff, salon de coiffure mixte et barbier au 56 bd Pasteur à Amiens. Coupe femme, homme et enfant, couleur, mèches, balayage, taille de barbe et rasage. Prise de rendez-vous en ligne." />
+  <meta name="keywords" content="coiffeur Amiens, salon de coiffure Amiens, barbier Amiens, coupe homme Amiens, coloration, balayage, boulevard Pasteur" />
+  <meta name="author" content="ID'coiff" />
+  <meta name="theme-color" content="#2c2723" />
+  <link rel="canonical" href="https://[VOTRE-DOMAINE].fr/" />
+
+  <!-- Réseaux sociaux (Open Graph / Twitter) -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="ID'coiff — Salon de coiffure & barbier à Amiens" />
+  <meta property="og:description" content="Coupe, couleur, mèches, barbe. Salon mixte au 56 bd Pasteur, Amiens. Prenez rendez-vous en ligne." />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:url" content="https://[VOTRE-DOMAINE].fr/" />
+  <!-- <meta property="og:image" content="https://[VOTRE-DOMAINE].fr/apercu.jpg" /> -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon minimaliste inline (ciseaux) : aucune requête externe -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c2723' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cline x1='20' y1='4' x2='8.12' y2='15.88'/%3E%3Cline x1='14.47' y1='14.48' x2='20' y2='20'/%3E%3Cline x1='8.12' y1='8.12' x2='12' y2='12'/%3E%3C/svg%3E" />
+
+  <!--
+    ===================== DONNÉES STRUCTURÉES (Schema.org · HairSalon) =====================
+    ⚠️ À CONFIRMER avant mise en ligne : horaires exacts, tarifs, coordonnées GPS, URL.
+    Ces données aident Google à afficher le salon (fiche locale, horaires, prestations).
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "ID'coiff",
+    "description": "Salon de coiffure mixte et barbier à Amiens : coupe femme, homme et enfant, couleur, mèches, balayage, taille de barbe et rasage.",
+    "image": "https://[VOTRE-DOMAINE].fr/apercu.jpg",
+    "url": "https://[VOTRE-DOMAINE].fr/",
+    "telephone": "+33751858955",
+    "priceRange": "€€",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Espèces, Carte bancaire",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "56 boulevard Pasteur",
+      "addressLocality": "Amiens",
+      "postalCode": "80000",
+      "addressCountry": "FR"
+    },
+    "areaServed": "Amiens",
+    "sameAs": [
+      "https://www.facebook.com/p/IDcoiff-100053771562435/"
+    ],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday",    "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday",   "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday",  "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday",    "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday",  "opens": "09:00", "closes": "18:00" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Prestations",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coupe femme" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coupe homme" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coupe enfant" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coloration" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mèches / Balayage" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Taille de barbe" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rasage traditionnel" } }
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    /* ========================================================================
+       0. RÉGLAGES DE LA MARQUE
+       ======================================================================== */
+
+    /*
+      Les deux variables ci-dessous sont enregistrées via @property avec une
+      valeur de repli (initial-value). Résultat : la maquette reste élégante
+      MÊME tant que les couleurs ne sont pas renseignées, puis adopte les vôtres
+      dès que vous les saisissez. Laissez « @property » tel quel.
+    */
+    @property --color-primary {
+      syntax: '<color>';
+      inherits: true;
+      initial-value: #2c2723; /* repli : brun-charbon chaud (aperçu) */
+    }
+    @property --color-accent {
+      syntax: '<color>';
+      inherits: true;
+      initial-value: #b8934e; /* repli : or feutré (aperçu) */
+    }
+
+    :root {
+      /* ┌──────────────────────────────────────────────────────────────┐
+         │  🎨  COULEURS DE LA MARQUE — LES 2 SEULES VALEURS À RENSEIGNER  │
+         │  Collez ici les couleurs relevées sur le logo / la devanture.  │
+         │  Tout le reste (fonds, textes, bordures, survols) en découle   │
+         │  automatiquement via color-mix(). Ne touchez à rien d'autre.   │
+         └──────────────────────────────────────────────────────────────┘ */
+      --color-primary: ; /* couleur principale de la marque */
+      --color-accent:  ; /* couleur d'accent : boutons, détails */
+
+      /* ————————————————————————————————————————————————————————————————
+         Ancrages neutres (ni marque, ni décor) servant aux mélanges.
+         Le blanc et le presque-noir garantissent la lisibilité quelle que
+         soit la teinte de marque (claire OU foncée).
+         ———————————————————————————————————————————————————————————————— */
+      --white: #ffffff;
+      --black: #17130f; /* presque-noir légèrement chaud */
+
+      /* Alias internes (n'utilisez plus jamais une couleur en dur au-delà) */
+      --primary: var(--color-primary);
+      --accent:  var(--color-accent);
+
+      /* — Surfaces : toujours claires — */
+      --surface:    var(--white);
+      --surface-2:  color-mix(in srgb, var(--primary)  4%, var(--white)); /* panneau très pâle */
+      --surface-3:  color-mix(in srgb, var(--primary)  8%, var(--white)); /* panneau pâle */
+
+      /* — Encre (textes) : toujours foncée et lisible, teintée de marque — */
+      --ink:        color-mix(in srgb, var(--primary) 14%, var(--black));  /* titres + corps */
+      --ink-soft:   color-mix(in srgb, var(--primary) 12%, #4b4641);       /* texte secondaire */
+      --ink-faint:  color-mix(in srgb, var(--primary) 10%, #8a847d);       /* légendes, sous-titres */
+
+      /* — Filets & bordures — */
+      --line:        color-mix(in srgb, var(--primary) 16%, #e7e2dc);
+      --line-strong: color-mix(in srgb, var(--primary) 26%, #d7d0c8);
+
+      /* — Accent : variantes sûres — */
+      --accent-ink:  color-mix(in srgb, var(--accent) 52%, var(--ink));   /* accent LISIBLE en texte */
+      --accent-wash: color-mix(in srgb, var(--accent) 12%, var(--white)); /* fond d'accent très pâle */
+      --accent-line: color-mix(in srgb, var(--accent) 55%, var(--line));
+
+      /* — Bouton principal (toujours lisible : encre foncée + texte clair) — */
+      --cta-bg:       var(--ink);
+      --cta-bg-hover: color-mix(in srgb, var(--ink) 82%, var(--accent));
+      --cta-fg:       color-mix(in srgb, var(--primary) 5%, var(--white));
+
+      /* — Bandeau profond (footer) : toujours foncé, teinté de marque — */
+      --deep:    color-mix(in srgb, var(--primary) 24%, var(--black));
+      --on-deep: color-mix(in srgb, var(--primary) 8%, var(--white));
+      --deep-line: color-mix(in srgb, var(--white) 14%, transparent);
+
+      /* — Design tokens uniques (cohérence : 1 rayon, 1 ombre) — */
+      --radius: 16px;
+      --shadow: 0 22px 48px -30px color-mix(in srgb, var(--primary) 55%, transparent);
+      --ring:   0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent);
+
+      /* — Échelle d'espacement 8 px — */
+      --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
+
+      /* — Typographies (100 % polices système : aucune requête externe) — */
+      --font-display: Georgia, 'Cormorant Garamond', 'Hoefler Text', 'Times New Roman', serif;
+      --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+      --container: 1180px;
+      --header-h: 72px;
+    }
+
+    /* ========================================================================
+       1. RESET & BASES
+       ======================================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    /* Décalage des ancres pour ne pas passer sous l'en-tête fixe */
+    :target { scroll-margin-top: calc(var(--header-h) + var(--s3)); }
+    section[id] { scroll-margin-top: calc(var(--header-h) + var(--s2)); }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--surface);
+      font-size: 1.0625rem;      /* 17px */
+      line-height: 1.7;
+      letter-spacing: .003em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;         /* garde-fou : aucun scroll horizontal */
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    p { text-wrap: pretty; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    ul { list-style: none; padding: 0; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+
+    /* Accessibilité : focus visible et cohérent partout */
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 6px;
+    }
+
+    /* Lien d'évitement (lecteurs d'écran / clavier) */
+    .skip-link {
+      position: absolute; left: 50%; top: -100px; transform: translateX(-50%);
+      background: var(--cta-bg); color: var(--cta-fg);
+      padding: var(--s2) var(--s3); border-radius: var(--radius);
+      z-index: 200; transition: top .2s ease;
+    }
+    .skip-link:focus { top: var(--s2); }
+
+    /* ========================================================================
+       2. UTILITAIRES DE MISE EN PAGE
+       ======================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: clamp(20px, 5vw, 40px);
+    }
+
+    .section { padding-block: clamp(64px, 11vw, 132px); }
+    .section--tint { background: var(--surface-2); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--s1);
+      font-family: var(--font-body);
+      font-size: .78rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent-ink);
+    }
+    .eyebrow::before {
+      content: ""; width: 26px; height: 1px;
+      background: var(--accent-line);
+    }
+
+    .section__head { max-width: 640px; margin-bottom: clamp(var(--s5), 6vw, var(--s7)); }
+    .section__head--center { margin-inline: auto; text-align: center; }
+    .section__head--center .eyebrow::before { display: none; }
+    .section__title { font-size: clamp(1.9rem, 4.6vw, 2.9rem); margin-top: var(--s2); }
+    .section__lead {
+      margin-top: var(--s3); font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+      color: var(--ink-soft); line-height: 1.75;
+    }
+
+    /* ========================================================================
+       3. BOUTONS
+       ======================================================================== */
+    .btn {
+      --_pad-y: 15px;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--s1);
+      min-height: 48px;                 /* zone tactile ≥ 44px */
+      padding: var(--_pad-y) clamp(20px, 4vw, 30px);
+      border-radius: var(--radius);
+      font-size: .98rem; font-weight: 600; letter-spacing: .01em;
+      border: 1px solid transparent;
+      transition: background-color .25s ease, color .25s ease,
+                  border-color .25s ease, transform .25s ease;
+      text-align: center;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+
+    /* Bouton principal : encre foncée, texte clair — lisible quelle que soit la marque */
+    .btn--primary { background: var(--cta-bg); color: var(--cta-fg); }
+    .btn--primary:hover { background: var(--cta-bg-hover); }
+
+    /* Bouton secondaire : contour d'accent sur fond clair */
+    .btn--ghost {
+      background: transparent; color: var(--ink);
+      border-color: var(--line-strong);
+    }
+    .btn--ghost:hover {
+      border-color: var(--accent);
+      background: var(--accent-wash);
+    }
+
+    /* Variante sur fond foncé (footer) */
+    .btn--on-deep {
+      background: var(--on-deep); color: var(--deep);
+      border-color: transparent;
+    }
+    .btn--on-deep:hover { background: var(--white); }
+
+    .btn--block { width: 100%; }
+
+    /* ========================================================================
+       4. EN-TÊTE
+       ======================================================================== */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: color-mix(in srgb, var(--surface) 82%, transparent);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s ease, background-color .3s ease;
+    }
+    .header.is-scrolled {
+      border-bottom-color: var(--line);
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+    }
+    .header__inner {
+      min-height: var(--header-h);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--s3);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; }
+    .brand__mark { width: 30px; height: 30px; color: var(--accent-ink); flex: none; }
+    .brand__name {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 600;
+      letter-spacing: -0.01em; color: var(--ink);
+    }
+    .brand__name .apo { color: var(--accent-ink); }
+
+    .nav { display: flex; align-items: center; gap: clamp(var(--s3), 3vw, var(--s5)); }
+    .nav__link {
+      font-size: .96rem; color: var(--ink-soft); position: relative;
+      padding: 4px 0; transition: color .2s ease;
+    }
+    .nav__link::after {
+      content: ""; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 1.5px; background: var(--accent);
+      transition: width .25s ease;
+    }
+    .nav__link:hover { color: var(--ink); }
+    .nav__link:hover::after { width: 100%; }
+
+    .header__cta { display: inline-flex; align-items: center; gap: var(--s2); }
+
+    /* ========================================================================
+       5. HERO
+       ======================================================================== */
+    .hero { position: relative; overflow: hidden; }
+    .hero::before,
+    .hero::after { content: ""; position: absolute; z-index: 0; border-radius: 50%; }
+    /* Halo d'accent très diffus, statique (aucune ombre lourde) */
+    .hero::before {
+      width: 520px; height: 520px; top: -160px; right: -140px;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 68%);
+    }
+    .hero::after {
+      width: 420px; height: 420px; bottom: -180px; left: -160px;
+      background: radial-gradient(circle, color-mix(in srgb, var(--primary) 12%, transparent), transparent 70%);
+    }
+    .hero__inner {
+      position: relative; z-index: 1;
+      padding-block: clamp(var(--s6), 9vw, var(--s8)) clamp(var(--s6), 8vw, var(--s7));
+      display: grid; gap: clamp(var(--s5), 6vw, var(--s7));
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+    .hero__title {
+      font-size: clamp(2.6rem, 8vw, 4.6rem);
+      line-height: 1.04; margin-top: var(--s3);
+    }
+    .hero__title em { font-style: italic; color: var(--accent-ink); }
+    .hero__lead {
+      margin-top: var(--s4); max-width: 30em;
+      font-size: clamp(1.08rem, 2.6vw, 1.28rem); color: var(--ink-soft);
+    }
+    .hero__actions {
+      margin-top: clamp(var(--s4), 5vw, var(--s5));
+      display: flex; flex-wrap: wrap; gap: var(--s2);
+    }
+    .hero__meta {
+      margin-top: var(--s5); display: flex; flex-wrap: wrap;
+      gap: var(--s2) var(--s4); align-items: center;
+      font-size: .92rem; color: var(--ink-faint);
+    }
+    .hero__meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero__meta svg { width: 17px; height: 17px; color: var(--accent-ink); }
+
+    /* ========================================================================
+       6. EMPLACEMENTS PHOTO ([PHOTO À FOURNIR]) — élégants même vides
+       ======================================================================== */
+    .photo {
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      gap: 10px; padding: var(--s4);
+      background:
+        linear-gradient(150deg,
+          var(--surface-2),
+          color-mix(in srgb, var(--accent) 6%, var(--surface-3)));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink-faint);
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+    }
+    /* Petits repères d'angle en accent (détail « cadre photo ») */
+    .photo::before, .photo::after {
+      content: ""; position: absolute; width: 20px; height: 20px;
+      border: 1.5px solid var(--accent-line);
+    }
+    .photo::before { top: 14px; left: 14px; border-right: 0; border-bottom: 0; }
+    .photo::after  { bottom: 14px; right: 14px; border-left: 0; border-top: 0; }
+    .photo__icon { width: 34px; height: 34px; color: var(--ink-faint); opacity: .8; }
+    .photo__label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--ink-soft);
+    }
+    .photo__hint { font-size: .88rem; color: var(--ink-faint); max-width: 22ch; }
+
+    .photo--wide  { aspect-ratio: 16 / 10; }
+    .photo--tall  { aspect-ratio: 3 / 4; }
+    .photo--square{ aspect-ratio: 1 / 1; }
+    .photo--hero  { aspect-ratio: 4 / 5; box-shadow: var(--shadow); }
+
+    /* ========================================================================
+       7. PRÉSENTATION
+       ======================================================================== */
+    .about__grid {
+      display: grid; grid-template-columns: 1fr; gap: clamp(var(--s5), 6vw, var(--s7));
+      align-items: center;
+    }
+    .about__features {
+      margin-top: var(--s5); display: grid; gap: var(--s3);
+      grid-template-columns: 1fr;
+    }
+    .feature { display: flex; gap: var(--s3); align-items: flex-start; }
+    .feature__icon {
+      flex: none; width: 46px; height: 46px; border-radius: var(--radius);
+      display: grid; place-items: center;
+      background: var(--accent-wash);
+      border: 1px solid var(--accent-line);
+      color: var(--accent-ink);
+    }
+    .feature__icon svg { width: 22px; height: 22px; }
+    .feature h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .feature p { font-size: .96rem; color: var(--ink-soft); }
+
+    /* ========================================================================
+       8. PRESTATIONS & TARIFS
+       ======================================================================== */
+    .filters {
+      display: flex; flex-wrap: wrap; gap: var(--s1);
+      margin-bottom: clamp(var(--s4), 5vw, var(--s5));
+    }
+    .filter {
+      min-height: 44px; padding: 9px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line-strong);
+      background: transparent; color: var(--ink-soft);
+      font-size: .92rem; font-weight: 600;
+      transition: all .2s ease;
+    }
+    .filter:hover { border-color: var(--accent); color: var(--ink); }
+    .filter.is-active {
+      background: var(--cta-bg); color: var(--cta-fg); border-color: var(--cta-bg);
+    }
+
+    .services { display: grid; gap: var(--s3); grid-template-columns: 1fr; }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: clamp(var(--s3), 4vw, var(--s5));
+    }
+    .service-card__head {
+      display: flex; align-items: center; gap: var(--s2);
+      margin-bottom: var(--s3); padding-bottom: var(--s3);
+      border-bottom: 1px solid var(--line);
+    }
+    .service-card__icon {
+      width: 40px; height: 40px; flex: none; border-radius: 12px;
+      display: grid; place-items: center;
+      background: var(--accent-wash); color: var(--accent-ink);
+    }
+    .service-card__icon svg { width: 20px; height: 20px; }
+    .service-card__title { font-size: 1.3rem; }
+
+    .price {
+      display: flex; align-items: baseline; gap: var(--s2);
+      padding: 11px 0;
+    }
+    .price + .price { border-top: 1px dotted var(--line); }
+    .price__name { font-weight: 600; color: var(--ink); }
+    .price__desc {
+      display: block; font-weight: 400; font-size: .86rem;
+      color: var(--ink-faint); letter-spacing: 0;
+    }
+    .price__dots {
+      flex: 1 1 auto; align-self: center;
+      border-bottom: 1px dotted var(--line-strong);
+      min-width: 12px; transform: translateY(-2px);
+    }
+    .price__value {
+      flex: none; font-weight: 700; color: var(--accent-ink);
+      font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .price__value small { font-weight: 600; font-size: .74em; color: var(--ink-faint); }
+
+    .services-note {
+      margin-top: var(--s4);
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .88rem; color: var(--ink-faint);
+    }
+    .services-note svg { width: 16px; height: 16px; flex: none; margin-top: 3px; color: var(--accent-ink); }
+
+    /* Badge « à confirmer » discret */
+    .badge {
+      display: inline-block; margin-left: auto;
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent-ink);
+      background: var(--accent-wash); border: 1px solid var(--accent-line);
+      padding: 4px 9px; border-radius: 999px;
+    }
+
+    /* ========================================================================
+       9. GALERIE
+       ======================================================================== */
+    .gallery {
+      display: grid; gap: var(--s2);
+      grid-template-columns: 1fr;
+    }
+    .gallery .photo { aspect-ratio: 1 / 1; }
+
+    /* ========================================================================
+       10. ÉQUIPE
+       ======================================================================== */
+    .team { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
+    .member { text-align: center; }
+    .member .photo {
+      aspect-ratio: 1 / 1; border-radius: var(--radius); margin-bottom: var(--s3);
+    }
+    .member__name { font-size: 1.2rem; }
+    .member__role { font-size: .9rem; color: var(--accent-ink); font-weight: 600; letter-spacing: .04em; }
+    .member__bio { font-size: .92rem; color: var(--ink-soft); margin-top: 6px; }
+
+    /* ========================================================================
+       11. HORAIRES + CONTACT
+       ======================================================================== */
+    .contact__grid {
+      display: grid; grid-template-columns: 1fr; gap: clamp(var(--s5), 6vw, var(--s6));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(var(--s4), 4vw, var(--s5));
+    }
+    .card__title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.3rem; margin-bottom: var(--s3);
+    }
+    .card__title svg { width: 20px; height: 20px; color: var(--accent-ink); }
+
+    .hours { width: 100%; }
+    .hours__row {
+      display: flex; justify-content: space-between; gap: var(--s2);
+      padding: 11px 0; font-size: .98rem;
+    }
+    .hours__row + .hours__row { border-top: 1px solid var(--line); }
+    .hours__day { color: var(--ink-soft); }
+    .hours__val { font-weight: 600; font-variant-numeric: tabular-nums; }
+    .hours__val--closed { color: var(--ink-faint); font-weight: 500; }
+    .hours__row.is-today {
+      background: var(--accent-wash);
+      margin-inline: calc(-1 * var(--s2)); padding-inline: var(--s2);
+      border-radius: 10px;
+    }
+    .hours__row.is-today .hours__day { color: var(--ink); font-weight: 600; }
+    .hours__today-tag {
+      font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent-ink); margin-left: 8px;
+    }
+
+    .contact-list { display: grid; gap: var(--s3); }
+    .contact-item { display: flex; gap: var(--s2); align-items: flex-start; }
+    .contact-item__icon {
+      flex: none; width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: var(--accent-wash); border: 1px solid var(--accent-line);
+      color: var(--accent-ink);
+    }
+    .contact-item__icon svg { width: 20px; height: 20px; }
+    .contact-item__label { font-size: .8rem; color: var(--ink-faint); letter-spacing: .04em; }
+    .contact-item__value { font-weight: 600; color: var(--ink); }
+    a.contact-item__value:hover { color: var(--accent-ink); }
+
+    /* Plan stylisé (SVG maison, aucun service externe) */
+    .map {
+      margin-top: var(--s4);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; background: var(--surface-3);
+    }
+    .map svg { width: 100%; height: auto; display: block; }
+    .map__bar {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
+      flex-wrap: wrap;
+      padding: var(--s2) var(--s3); background: var(--surface);
+      border-top: 1px solid var(--line);
+      font-size: .9rem; color: var(--ink-soft);
+    }
+    .map__link {
+      font-weight: 600; color: var(--accent-ink);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .map__link svg { width: 15px; height: 15px; }
+
+    /* ========================================================================
+       12. BANDEAU CTA
+       ======================================================================== */
+    .cta-band { background: var(--deep); color: var(--on-deep); text-align: center; }
+    .cta-band .eyebrow { color: color-mix(in srgb, var(--accent) 60%, var(--white)); }
+    .cta-band .eyebrow::before { background: color-mix(in srgb, var(--accent) 55%, var(--white)); }
+    .cta-band__title { color: var(--on-deep); font-size: clamp(1.9rem, 5vw, 3rem); margin-top: var(--s2); }
+    .cta-band__text { color: color-mix(in srgb, var(--on-deep) 80%, transparent); margin: var(--s3) auto 0; max-width: 40ch; }
+    .cta-band__actions { margin-top: var(--s5); display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: center; }
+
+    /* ========================================================================
+       13. PIED DE PAGE
+       ======================================================================== */
+    .footer { background: var(--deep); color: var(--on-deep); padding-block: clamp(var(--s6), 8vw, var(--s7)) var(--s5); }
+    .footer__grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--s5);
+      padding-bottom: var(--s5); border-bottom: 1px solid var(--deep-line);
+    }
+    .footer__brand .brand__name { color: var(--on-deep); }
+    .footer__tag { margin-top: var(--s2); color: color-mix(in srgb, var(--on-deep) 72%, transparent); max-width: 30ch; font-size: .95rem; }
+    .footer h4 {
+      font-family: var(--font-body); font-size: .78rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--accent) 55%, var(--white));
+      margin-bottom: var(--s3);
+    }
+    .footer__links { display: grid; gap: 10px; }
+    .footer__links a, .footer address a, .footer address {
+      color: color-mix(in srgb, var(--on-deep) 82%, transparent);
+      font-size: .95rem; font-style: normal; line-height: 1.7;
+    }
+    .footer__links a:hover, .footer address a:hover { color: var(--white); }
+    .footer__social { display: flex; gap: 10px; margin-top: var(--s3); }
+    .footer__social a {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      border: 1px solid var(--deep-line);
+      color: var(--on-deep); transition: all .2s ease;
+    }
+    .footer__social a:hover { background: var(--on-deep); color: var(--deep); }
+    .footer__social svg { width: 20px; height: 20px; }
+    .footer__bottom {
+      padding-top: var(--s4);
+      display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4);
+      justify-content: space-between; align-items: center;
+      font-size: .84rem; color: color-mix(in srgb, var(--on-deep) 60%, transparent);
+    }
+    .footer__bottom a { color: color-mix(in srgb, var(--on-deep) 78%, transparent); text-decoration: underline; text-underline-offset: 3px; }
+    .footer__bottom a:hover { color: var(--white); }
+
+    /* ========================================================================
+       14. BARRE D'ACTION COLLANTE (MOBILE)
+       ======================================================================== */
+    .actionbar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      display: none;                     /* affichée en mobile uniquement (voir media query) */
+      gap: var(--s1);
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-top: 1px solid var(--line);
+    }
+    .actionbar .btn { flex: 1; min-height: 50px; }
+    .actionbar .btn--ghost { flex: 0 0 auto; padding-inline: 18px; }
+
+    /* ========================================================================
+       15. RÉVÉLATION AU DÉFILEMENT
+       ======================================================================== */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ========================================================================
+       16. POINTS DE RUPTURE (mobile-first → tablette → desktop)
+       ======================================================================== */
+
+    /* Petit mobile : la barre d'action apparaît, on réserve la place en bas */
+    @media (max-width: 767px) {
+      .actionbar { display: flex; }
+      body { padding-bottom: 84px; }
+      .nav, .header__cta { display: none; }        /* CTA principal → barre du bas */
+    }
+
+    /* ≥ 600px : galerie et équipe sur 2 colonnes */
+    @media (min-width: 600px) {
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .team { grid-template-columns: repeat(2, 1fr); }
+      .about__features { grid-template-columns: 1fr 1fr; }
+      .hero__actions .btn { min-width: 210px; }
+    }
+
+    /* ≥ 768px : mise en page desktop */
+    @media (min-width: 768px) {
+      .hero__inner { grid-template-columns: 1.05fr .95fr; }
+      .about__grid { grid-template-columns: 1fr 1fr; }
+      .services { grid-template-columns: 1fr 1fr; }
+      .contact__grid { grid-template-columns: 1fr 1.15fr; }
+      .gallery { grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+      .team { grid-template-columns: repeat(3, 1fr); }
+      /* Galerie : quelques tuiles s'étendent pour un rythme éditorial */
+      .gallery__item--big { grid-column: span 2; grid-row: span 2; }
+      .gallery .photo { aspect-ratio: auto; height: 100%; min-height: 220px; }
+    }
+
+    /* ≥ 1024px : respiration maximale */
+    @media (min-width: 1024px) {
+      .about__features { gap: var(--s4); }
+    }
+
+    /* Préférence : moins d'animations */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- ============================ EN-TÊTE ============================ -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="ID'coiff — accueil">
+        <!-- Marque : ciseaux (SVG inline) -->
+        <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+          <line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
+        </svg>
+        <span class="brand__name">ID<span class="apo">'</span>coiff</span>
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="nav__link" href="#salon">Le salon</a>
+        <a class="nav__link" href="#prestations">Prestations</a>
+        <a class="nav__link" href="#galerie">Galerie</a>
+        <a class="nav__link" href="#equipe">Équipe</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="header__cta">
+        <!-- ⚠️ Remplacez [LIEN PLANITY] par l'URL de réservation Planity du salon -->
+        <a class="btn btn--primary" href="[LIEN PLANITY]" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Prendre rendez-vous
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <span class="eyebrow">Coiffure mixte &amp; barbier · Amiens</span>
+          <h1 class="hero__title" id="hero-title">
+            Votre style,<br><em>révélé.</em>
+          </h1>
+          <p class="hero__lead">
+            Coupe, couleur, barbe : au 56&nbsp;boulevard Pasteur, on prend le temps
+            de comprendre ce qui vous ressemble. Un salon chaleureux où l'on
+            ressort avec l'allure — et le sourire.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="[LIEN PLANITY]" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Prendre rendez-vous
+            </a>
+            <a class="btn btn--ghost" href="#prestations">Voir les prestations</a>
+          </div>
+          <div class="hero__meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              56 bd Pasteur, Amiens
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+              Sur rendez-vous &amp; sans rendez-vous
+            </span>
+          </div>
+        </div>
+
+        <div class="hero__media reveal">
+          <!-- [PHOTO À FOURNIR] — Ambiance du salon (photo verticale d'accueil) -->
+          <figure class="photo photo--hero" role="img" aria-label="Emplacement photo : ambiance du salon, à fournir">
+            <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.2-2h5.6L16 5"/></svg>
+            <span class="photo__label">[Photo à fournir]</span>
+            <span class="photo__hint">Ambiance du salon — vitrine, fauteuils, lumière</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ LE SALON ============================ -->
+    <section class="section section--tint" id="salon" aria-labelledby="salon-title">
+      <div class="container about__grid">
+        <div class="about__media reveal">
+          <!-- [PHOTO À FOURNIR] — L'équipe / un moment dans le salon -->
+          <figure class="photo photo--tall" role="img" aria-label="Emplacement photo : l'équipe au travail, à fournir">
+            <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="photo__label">[Photo à fournir]</span>
+            <span class="photo__hint">L'équipe au travail, un moment dans le salon</span>
+          </figure>
+        </div>
+
+        <div class="about__text reveal">
+          <div class="section__head" style="margin-bottom: var(--s3)">
+            <span class="eyebrow">Le salon</span>
+            <h2 class="section__title" id="salon-title">Un savoir-faire, une atmosphère</h2>
+          </div>
+          <p style="color: var(--ink-soft)">
+            Chez ID'coiff, on croit qu'une belle coupe commence par une vraie
+            écoute. Femmes, hommes, enfants&nbsp;: chacun repart avec un résultat
+            pensé pour son visage, son quotidien et ses envies — sans jamais
+            forcer la tendance.
+          </p>
+          <p style="color: var(--ink-soft); margin-top: var(--s2)">
+            <!-- [À REMPLACER] par quelques lignes fidèles au salon (ambiance, valeurs, ancienneté) -->
+            Un espace mixte et convivial, doublé d'un véritable coin barbier
+            pour la taille et le rasage. On y vient pour l'expertise&nbsp;;
+            on y revient pour l'accueil.
+          </p>
+
+          <div class="about__features">
+            <div class="feature">
+              <span class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+              </span>
+              <div>
+                <h3>Coupe &amp; coiffage</h3>
+                <p>Femmes, hommes et enfants — coupes actuelles et intemporelles.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3 4-6 6-6 10a6 6 0 0 0 12 0c0-4-3-6-6-10Z"/></svg>
+              </span>
+              <div>
+                <h3>Couleur &amp; technique</h3>
+                <p>Coloration, mèches, balayage, patines et soins sur mesure.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H8"/><path d="M4 6v12"/><circle cx="18" cy="18" r="2"/></svg>
+              </span>
+              <div>
+                <h3>Espace barbier</h3>
+                <p>Taille de barbe, contours nets et rasage traditionnel.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.2 5.5L20 9l-4.5 3.8L17 19l-5-3-5 3 1.5-6.2L4 9l5.8-1.5Z"/></svg>
+              </span>
+              <div>
+                <h3>Conseil personnalisé</h3>
+                <p>On prend le temps du diagnostic avant de toucher aux ciseaux.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PRESTATIONS & TARIFS ============================ -->
+    <section class="section" id="prestations" aria-labelledby="prestations-title">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow">Prestations &amp; tarifs</span>
+          <h2 class="section__title" id="prestations-title">Des prestations pour toute la famille</h2>
+          <p class="section__lead">
+            Femmes, hommes, enfants et barbier. Filtrez par univers pour trouver
+            ce qu'il vous faut.
+          </p>
+        </div>
+
+        <!-- Filtres (JS) — accessibles au clavier, purement optionnels -->
+        <div class="filters reveal" role="tablist" aria-label="Filtrer les prestations">
+          <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+          <button class="filter" data-filter="femmes" role="tab" aria-selected="false">Femmes</button>
+          <button class="filter" data-filter="hommes" role="tab" aria-selected="false">Hommes</button>
+          <button class="filter" data-filter="enfants" role="tab" aria-selected="false">Enfants</button>
+          <button class="filter" data-filter="barbier" role="tab" aria-selected="false">Barbier</button>
+          <button class="filter" data-filter="technique" role="tab" aria-selected="false">Techniques</button>
+        </div>
+
+        <div class="services">
+
+          <!-- ————— FEMMES ————— -->
+          <article class="service-card reveal" data-cat="femmes">
+            <header class="service-card__head">
+              <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3 3-4 6-4 9M12 13c3 3 4 6 4 9"/></svg></span>
+              <h3 class="service-card__title">Femmes</h3>
+              <span class="badge">Tarifs à confirmer</span>
+            </header>
+            <ul>
+              <li class="price"><span class="price__name">Shampooing, coupe &amp; coiffage<span class="price__desc">diagnostic, coupe, coiffage</span></span><span class="price__dots"></span><span class="price__value">28&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Coupe &amp; brushing<span class="price__desc">selon la longueur</span></span><span class="price__dots"></span><span class="price__value"><small>dès</small> 32&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Brushing seul</span><span class="price__dots"></span><span class="price__value"><small>dès</small> 18&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Coiffure événementielle<span class="price__desc">mariage, cérémonie</span></span><span class="price__dots"></span><span class="price__value"><small>sur devis</small></span></li>
+            </ul>
+          </article>
+
+          <!-- ————— HOMMES ————— -->
+          <article class="service-card reveal" data-cat="hommes">
+            <header class="service-card__head">
+              <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/></svg></span>
+              <h3 class="service-card__title">Hommes</h3>
+              <span class="badge">Tarifs à confirmer</span>
+            </header>
+            <ul>
+              <li class="price"><span class="price__name">Coupe homme<span class="price__desc">shampooing, coupe, finitions</span></span><span class="price__dots"></span><span class="price__value">17&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Coupe + barbe</span><span class="price__dots"></span><span class="price__value">25&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Dégradé américain<span class="price__desc">fondu net, contours</span></span><span class="price__dots"></span><span class="price__value">20&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Tondeuse intégrale</span><span class="price__dots"></span><span class="price__value">13&nbsp;€</span></li>
+            </ul>
+          </article>
+
+          <!-- ————— ENFANTS ————— -->
+          <article class="service-card reveal" data-cat="enfants">
+            <header class="service-card__head">
+              <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M6 21a6 6 0 0 1 12 0"/><path d="M9 3.5a3 3 0 0 1 6 0"/></svg></span>
+              <h3 class="service-card__title">Enfants</h3>
+              <span class="badge">Tarifs à confirmer</span>
+            </header>
+            <ul>
+              <li class="price"><span class="price__name">Coupe enfant<span class="price__desc">jusqu'à 10 ans</span></span><span class="price__dots"></span><span class="price__value">14&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Coupe ado<span class="price__desc">11 à 15 ans</span></span><span class="price__dots"></span><span class="price__value">16&nbsp;€</span></li>
+            </ul>
+          </article>
+
+          <!-- ————— BARBIER ————— -->
+          <article class="service-card reveal" data-cat="barbier">
+            <header class="service-card__head">
+              <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10a4 4 0 0 1 4 4 4 4 0 0 1-4 4H8"/><path d="M4 6v12"/><circle cx="18" cy="18" r="2"/></svg></span>
+              <h3 class="service-card__title">Barbier</h3>
+              <span class="badge">Tarifs à confirmer</span>
+            </header>
+            <ul>
+              <li class="price"><span class="price__name">Taille de barbe<span class="price__desc">contours &amp; soin</span></span><span class="price__dots"></span><span class="price__value">12&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Rasage traditionnel<span class="price__desc">serviette chaude, coupe-chou</span></span><span class="price__dots"></span><span class="price__value">18&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Contour / tracé</span><span class="price__dots"></span><span class="price__value">8&nbsp;€</span></li>
+            </ul>
+          </article>
+
+          <!-- ————— TECHNIQUES ————— -->
+          <article class="service-card reveal" data-cat="technique">
+            <header class="service-card__head">
+              <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-3 4-6 6-6 10a6 6 0 0 0 12 0c0-4-3-6-6-10Z"/></svg></span>
+              <h3 class="service-card__title">Couleur &amp; techniques</h3>
+              <span class="badge">Tarifs à confirmer</span>
+            </header>
+            <ul>
+              <li class="price"><span class="price__name">Coloration<span class="price__desc">racines ou longueurs</span></span><span class="price__dots"></span><span class="price__value"><small>dès</small> 35&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Mèches / Balayage</span><span class="price__dots"></span><span class="price__value"><small>dès</small> 55&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Patine / Gloss</span><span class="price__dots"></span><span class="price__value"><small>dès</small> 25&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Lissage brésilien</span><span class="price__dots"></span><span class="price__value"><small>dès</small> 90&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Soin profond<span class="price__desc">en complément</span></span><span class="price__dots"></span><span class="price__value"><small>dès</small> 12&nbsp;€</span></li>
+            </ul>
+          </article>
+
+          <!-- ————— SOINS (mis dans « techniques » au filtrage) ————— -->
+          <article class="service-card reveal" data-cat="femmes">
+            <header class="service-card__head">
+              <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.2 5.5L20 9l-4.5 3.8L17 19l-5-3-5 3 1.5-6.2L4 9l5.8-1.5Z"/></svg></span>
+              <h3 class="service-card__title">Coiffage &amp; forfaits</h3>
+              <span class="badge">Tarifs à confirmer</span>
+            </header>
+            <ul>
+              <li class="price"><span class="price__name">Coupe + couleur<span class="price__desc">forfait</span></span><span class="price__dots"></span><span class="price__value"><small>dès</small> 55&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Coupe + balayage<span class="price__desc">forfait</span></span><span class="price__dots"></span><span class="price__value"><small>dès</small> 75&nbsp;€</span></li>
+              <li class="price"><span class="price__name">Permanente / boucles</span><span class="price__dots"></span><span class="price__value"><small>dès</small> 45&nbsp;€</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="services-note reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span><strong>Tarifs indicatifs à valider avec le salon.</strong> Les prix
+          définitifs varient selon la longueur et l'épaisseur des cheveux&nbsp;;
+          un devis précis est donné avant chaque prestation technique.
+          <em>[À remplacer par la grille tarifaire réelle du salon.]</em></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ GALERIE ============================ -->
+    <section class="section section--tint" id="galerie" aria-labelledby="galerie-title">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow">Réalisations</span>
+          <h2 class="section__title" id="galerie-title">La galerie du salon</h2>
+          <p class="section__lead">Ambiance, coupes, couleurs, avant/après — la vitrine du savoir-faire.</p>
+        </div>
+
+        <div class="gallery reveal">
+          <!-- Chaque bloc = un [PHOTO À FOURNIR]. Remplacez par une <img> le moment venu. -->
+          <div class="gallery__item gallery__item--big">
+            <figure class="photo" role="img" aria-label="Emplacement photo : réalisation phare, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.2-2h5.6L16 5"/></svg>
+              <span class="photo__label">[Photo à fournir]</span>
+              <span class="photo__hint">Réalisation phare (grand format)</span>
+            </figure>
+          </div>
+          <div class="gallery__item">
+            <figure class="photo" role="img" aria-label="Emplacement photo : coupe femme, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/></svg>
+              <span class="photo__label">[Photo à fournir]</span>
+              <span class="photo__hint">Coupe femme</span>
+            </figure>
+          </div>
+          <div class="gallery__item">
+            <figure class="photo" role="img" aria-label="Emplacement photo : couleur / balayage, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/></svg>
+              <span class="photo__label">[Photo à fournir]</span>
+              <span class="photo__hint">Couleur / balayage</span>
+            </figure>
+          </div>
+          <div class="gallery__item">
+            <figure class="photo" role="img" aria-label="Emplacement photo : coupe homme / dégradé, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/></svg>
+              <span class="photo__label">[Photo à fournir]</span>
+              <span class="photo__hint">Coupe homme / dégradé</span>
+            </figure>
+          </div>
+          <div class="gallery__item">
+            <figure class="photo" role="img" aria-label="Emplacement photo : barbe / rasage, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/></svg>
+              <span class="photo__label">[Photo à fournir]</span>
+              <span class="photo__hint">Barbe / rasage</span>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ÉQUIPE (optionnel) ============================ -->
+    <section class="section" id="equipe" aria-labelledby="equipe-title">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow">L'équipe</span>
+          <h2 class="section__title" id="equipe-title">Les mains derrière les ciseaux</h2>
+          <p class="section__lead">Une équipe passionnée, à l'écoute de chaque envie. <em>[À remplacer par les vrais membres.]</em></p>
+        </div>
+
+        <div class="team">
+          <article class="member reveal">
+            <figure class="photo photo--square" role="img" aria-label="Emplacement portrait, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              <span class="photo__label">[Portrait]</span>
+            </figure>
+            <h3 class="member__name">[Prénom]</h3>
+            <p class="member__role">Fondateur · Coiffeur-barbier</p>
+            <p class="member__bio">Coupe homme, dégradés et rasage traditionnel.</p>
+          </article>
+          <article class="member reveal">
+            <figure class="photo photo--square" role="img" aria-label="Emplacement portrait, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              <span class="photo__label">[Portrait]</span>
+            </figure>
+            <h3 class="member__name">[Prénom]</h3>
+            <p class="member__role">Coloriste</p>
+            <p class="member__bio">Couleur, mèches, balayage et soins sur mesure.</p>
+          </article>
+          <article class="member reveal">
+            <figure class="photo photo--square" role="img" aria-label="Emplacement portrait, à fournir">
+              <svg class="photo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              <span class="photo__label">[Portrait]</span>
+            </figure>
+            <h3 class="member__name">[Prénom]</h3>
+            <p class="member__role">Coiffeuse mixte</p>
+            <p class="member__bio">Coupe femme, brushing et coiffures d'occasion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CONTACT & ACCÈS ============================ -->
+    <section class="section section--tint" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <span class="eyebrow">Contact &amp; accès</span>
+          <h2 class="section__title" id="contact-title">Nous trouver</h2>
+        </div>
+
+        <div class="contact__grid">
+          <!-- Colonne horaires -->
+          <div class="card reveal">
+            <h3 class="card__title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+              Horaires d'ouverture
+            </h3>
+            <!-- ⚠️ [À CONFIRMER] : horaires réels du salon -->
+            <div class="hours">
+              <div class="hours__row" data-day="1"><span class="hours__day">Lundi</span><span class="hours__val">09:00 – 19:00</span></div>
+              <div class="hours__row" data-day="2"><span class="hours__day">Mardi</span><span class="hours__val">09:00 – 19:00</span></div>
+              <div class="hours__row" data-day="3"><span class="hours__day">Mercredi</span><span class="hours__val hours__val--closed">Fermé</span></div>
+              <div class="hours__row" data-day="4"><span class="hours__day">Jeudi</span><span class="hours__val">09:00 – 19:00</span></div>
+              <div class="hours__row" data-day="5"><span class="hours__day">Vendredi</span><span class="hours__val">09:00 – 19:00</span></div>
+              <div class="hours__row" data-day="6"><span class="hours__day">Samedi</span><span class="hours__val">09:00 – 18:00</span></div>
+              <div class="hours__row" data-day="0"><span class="hours__day">Dimanche</span><span class="hours__val hours__val--closed">Fermé</span></div>
+            </div>
+            <p class="services-note" style="margin-top: var(--s3)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>Horaires indicatifs — <em>[à confirmer avec le salon].</em></span>
+            </p>
+          </div>
+
+          <!-- Colonne coordonnées + plan -->
+          <div class="reveal">
+            <div class="card">
+              <h3 class="card__title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Coordonnées
+              </h3>
+              <div class="contact-list">
+                <div class="contact-item">
+                  <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                  <div>
+                    <div class="contact-item__label">Adresse</div>
+                    <address style="font-style: normal"><span class="contact-item__value">56 boulevard Pasteur, 80000 Amiens</span></address>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+                  <div>
+                    <div class="contact-item__label">Téléphone</div>
+                    <a class="contact-item__value" href="tel:+33751858955">07 51 85 89 55</a>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></span>
+                  <div>
+                    <div class="contact-item__label">Réseaux</div>
+                    <a class="contact-item__value" href="https://www.facebook.com/p/IDcoiff-100053771562435/" target="_blank" rel="noopener">Facebook — ID'coiff</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Plan stylisé maison (aucun service de cartographie externe) -->
+              <div class="map">
+                <svg viewBox="0 0 600 260" role="img" aria-label="Plan stylisé de l'emplacement du salon, 56 boulevard Pasteur à Amiens" preserveAspectRatio="xMidYMid slice">
+                  <rect width="600" height="260" fill="var(--surface-3)"/>
+                  <!-- routes -->
+                  <g stroke="var(--line-strong)" stroke-width="10" fill="none" stroke-linecap="round">
+                    <path d="M-20 90 L620 60"/>
+                    <path d="M-20 190 L620 210"/>
+                    <path d="M120 -20 L150 280"/>
+                    <path d="M420 -20 L390 280"/>
+                  </g>
+                  <g stroke="var(--line)" stroke-width="4" fill="none" stroke-dasharray="2 10" stroke-linecap="round">
+                    <path d="M-20 90 L620 60"/>
+                    <path d="M-20 190 L620 210"/>
+                  </g>
+                  <!-- pâtés de maison -->
+                  <g fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5">
+                    <rect x="175" y="105" width="180" height="70" rx="6"/>
+                    <rect x="200" y="20" width="150" height="45" rx="6"/>
+                    <rect x="430" y="110" width="120" height="70" rx="6"/>
+                  </g>
+                  <!-- épingle (position du salon) -->
+                  <g transform="translate(300 130)">
+                    <circle r="30" fill="color-mix(in srgb, var(--accent) 18%, transparent)"/>
+                    <path d="M0 -22 C-13 -22 -22 -12 -22 0 C-22 15 0 30 0 30 C0 30 22 15 22 0 C22 -12 13 -22 0 -22 Z" fill="var(--accent-ink)"/>
+                    <circle cy="-2" r="7" fill="var(--surface)"/>
+                  </g>
+                </svg>
+                <div class="map__bar">
+                  <span>56 bd Pasteur · 80000 Amiens</span>
+                  <a class="map__link" href="https://www.google.com/maps/search/?api=1&query=56+boulevard+Pasteur+80000+Amiens" target="_blank" rel="noopener">
+                    Itinéraire
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <a class="btn btn--primary btn--block" style="margin-top: var(--s4)" href="[LIEN PLANITY]" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Prendre rendez-vous sur Planity
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ BANDEAU CTA ============================ -->
+    <section class="section cta-band" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="reveal" style="max-width: 720px; margin-inline: auto">
+          <span class="eyebrow">Envie de changement&nbsp;?</span>
+          <h2 class="cta-band__title" id="cta-title">Réservez votre fauteuil</h2>
+          <p class="cta-band__text">
+            Choisissez votre créneau en ligne en quelques secondes, à toute heure.
+            On s'occupe du reste.
+          </p>
+          <div class="cta-band__actions">
+            <a class="btn btn--on-deep" href="[LIEN PLANITY]" target="_blank" rel="noopener">Prendre rendez-vous</a>
+            <a class="btn btn--ghost" style="color: var(--on-deep); border-color: var(--deep-line)" href="tel:+33751858955">Appeler le salon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ PIED DE PAGE ============================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top" aria-label="ID'coiff — haut de page">
+            <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: color-mix(in srgb, var(--accent) 55%, var(--white))"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+            <span class="brand__name">ID'coiff</span>
+          </a>
+          <p class="footer__tag">Salon de coiffure mixte &amp; barbier au cœur d'Amiens. Coupe, couleur, barbe — avec le sourire.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/p/IDcoiff-100053771562435/" target="_blank" rel="noopener" aria-label="Facebook ID'coiff">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg>
+            </a>
+            <a href="tel:+33751858955" aria-label="Appeler ID'coiff">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav aria-label="Pied de page">
+          <h4>Le salon</h4>
+          <div class="footer__links">
+            <a href="#salon">Le salon</a>
+            <a href="#prestations">Prestations &amp; tarifs</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#equipe">Équipe</a>
+            <a href="#contact">Contact &amp; accès</a>
+          </div>
+        </nav>
+
+        <div>
+          <h4>Coordonnées</h4>
+          <address>
+            56 boulevard Pasteur<br>
+            80000 Amiens<br>
+            <a href="tel:+33751858955">07 51 85 89 55</a><br>
+            <a href="[LIEN PLANITY]" target="_blank" rel="noopener">Réserver sur Planity →</a>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> ID'coiff — Tous droits réservés.</span>
+        <!-- Crédit freelance : personnalisez ou retirez -->
+        <span>Maquette conçue par <a href="#">[Votre nom]</a> · <a href="#">[votre-site.fr]</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================ BARRE D'ACTION MOBILE ============================ -->
+  <div class="actionbar" role="region" aria-label="Actions rapides">
+    <a class="btn btn--ghost" href="tel:+33751858955" aria-label="Appeler le salon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+      <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Appeler</span>
+    </a>
+    <a class="btn btn--primary" href="[LIEN PLANITY]" target="_blank" rel="noopener">Prendre rendez-vous</a>
+  </div>
+
+  <!-- ============================ JAVASCRIPT (minimal, autonome) ============================ -->
+  <script>
+    (function () {
+      "use strict";
+
+      /* 1. Année dynamique dans le pied de page */
+      document.querySelectorAll("[data-year]").forEach(function (el) {
+        el.textContent = new Date().getFullYear();
+      });
+
+      /* 2. En-tête : état « scrolled » (fin filet + fond plus opaque) */
+      var header = document.querySelector(".header");
+      var onScroll = function () {
+        if (header) header.classList.toggle("is-scrolled", window.scrollY > 8);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      /* 3. Révélation douce au défilement (respecte prefers-reduced-motion) */
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var reveals = document.querySelectorAll(".reveal");
+      if (reduce || !("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("is-visible"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+
+      /* 4. Filtres de prestations */
+      var filters = document.querySelectorAll(".filter");
+      var cards = document.querySelectorAll(".service-card");
+      filters.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var val = btn.getAttribute("data-filter");
+          filters.forEach(function (b) {
+            var active = b === btn;
+            b.classList.toggle("is-active", active);
+            b.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          cards.forEach(function (card) {
+            var show = val === "all" || card.getAttribute("data-cat") === val;
+            card.style.display = show ? "" : "none";
+          });
+        });
+      });
+
+      /* 5. Mise en évidence du jour d'ouverture courant */
+      var today = new Date().getDay(); // 0 = dimanche … 6 = samedi
+      var row = document.querySelector('.hours__row[data-day="' + today + '"]');
+      if (row) {
+        row.classList.add("is-today");
+        var day = row.querySelector(".hours__day");
+        if (day) {
+          var tag = document.createElement("span");
+          tag.className = "hours__today-tag";
+          tag.textContent = "Aujourd'hui";
+          day.appendChild(tag);
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

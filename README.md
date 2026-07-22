@@ -45,9 +45,11 @@ Remplacez **toutes** les occurrences de `[LIEN PLANITY]` par l'URL Planity du sa
 (en-tête, hero, carte contact, bandeau, barre mobile, pied de page).
 
 ### 3. Les photos
-Chaque emplacement `[PHOTO À FOURNIR]` est un bloc `<figure class="photo">`.
-Remplacez-le par une `<img src="…" alt="…">` (ou un `background-image`) quand les
-photos sont disponibles. Le cadre est déjà pensé pour de belles images
+La **photo de la hero est déjà intégrée** (encodée en base64, cadre rempli en
+`cover`) — elle sert de modèle. Pour les autres emplacements `[PHOTO À FOURNIR]`
+(galerie, équipe), remplacez le bloc `<figure class="photo">` par une
+`<img src="…" alt="…">` en ajoutant la classe **`photo--filled`** (voir la hero),
+ou un `background-image`. Le cadre est déjà pensé pour de belles images
 (ambiance du salon, réalisations avant/après, équipe).
 
 ### 4. Les textes et coordonnées

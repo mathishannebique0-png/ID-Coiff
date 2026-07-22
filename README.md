@@ -37,8 +37,9 @@ Si vous changez la couleur principale, mettez aussi à jour la balise
 ### 1 bis. Le logo
 Le logo est **intégré directement dans `index.html`** (image encodée en base64
 dans la variable CSS `--logo`) : le fichier reste donc **100 % autonome**, sans
-aucune image externe. Il s'affiche **en cercle** dans l'en-tête et le pied de page.
-Pour changer de logo, remplacez l'URL `data:` de la variable `--logo`.
+aucune image externe. Il s'affiche **en cercle** dans l'en-tête et le pied de page,
+et sert aussi de **favicon** (icône d'onglet). Pour changer de logo, remplacez
+l'URL `data:` de la variable `--logo` (et l'image du `<link rel="icon">` pour le favicon).
 
 ### 2. Le lien de réservation Planity
 Remplacez **toutes** les occurrences de `[LIEN PLANITY]` par l'URL Planity du salon

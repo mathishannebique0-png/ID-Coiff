@@ -17,20 +17,28 @@ Tout se règle dans `index.html`. Cherchez les marqueurs entre crochets
 (`[ ... ]`) : ce sont les seuls éléments à remplacer.
 
 ### 1. Les 2 couleurs de la marque
-Dans le `<style>`, bloc **« COULEURS DE LA MARQUE »** (`:root`) :
+Actuellement réglées sur **noir + doré** (repris du logo ID'coiff). Pour les
+changer, éditez le bloc **« COULEURS DE LA MARQUE »** (`:root`) dans le `<style>` :
 
 ```css
---color-primary: ; /* couleur principale de la marque (logo / devanture) */
---color-accent:  ; /* couleur d'accent : boutons, détails */
+--color-primary: #0f0f0f; /* NOIR  — couleur principale de la marque */
+--color-accent:  #c9a227; /* DORÉ  — accent : boutons, détails */
 ```
 
-Collez-y les deux couleurs (relevées sur le logo ou la devanture). **Tout le reste**
-— fonds, textes, bordures, survols, ombres — en découle automatiquement via
-`color-mix()`. Le rendu reste lisible que la couleur soit **claire ou foncée**.
-Tant que rien n'est saisi, une teinte de démonstration élégante s'affiche.
+**Tout le reste** — fonds, textes, bordures, survols, ombres — en découle
+automatiquement via `color-mix()`. Le rendu reste lisible que la couleur soit
+**claire ou foncée**.
 
-Mettez aussi à jour la balise `<meta name="theme-color">` (elle doit refléter la
-couleur principale ; c'est la seule couleur « en dur », car elle n'est pas dérivable).
+Si vous changez la couleur principale, mettez aussi à jour la balise
+`<meta name="theme-color">` (elle doit la refléter ; c'est la seule couleur « en
+dur », car elle n'est pas dérivable).
+
+### 1 bis. Le logo
+Le logo s'affiche depuis un fichier **`logo.png`** (ou `.svg`) placé **à la racine**
+du projet, à côté de `index.html`. Il apparaît dans l'en-tête et le pied de page.
+**Tant que ce fichier est absent, le nom stylisé « ID'coiff » s'affiche à la place**
+(aucune image cassée). Déposez simplement votre `logo.png` pour qu'il apparaisse.
+Idéalement carré et détouré (fond transparent) : il est affiché en cercle.
 
 ### 2. Le lien de réservation Planity
 Remplacez **toutes** les occurrences de `[LIEN PLANITY]` par l'URL Planity du salon
@@ -54,7 +62,8 @@ Remplacez les marqueurs `[À REMPLACER]`, `[Prénom]`, `[Votre nom]`, etc. :
 
 ## ✅ Checklist avant mise en ligne
 
-- [ ] Renseigner `--color-primary` et `--color-accent` (+ `theme-color`)
+- [x] Couleurs réglées (noir + doré) — ajuster si besoin
+- [ ] Déposer le fichier `logo.png` à la racine du projet
 - [ ] Remplacer tous les `[LIEN PLANITY]`
 - [ ] Remplacer **toutes** les URL `[VOTRE-DOMAINE]` par le vrai domaine
       (`canonical`, `og:url`, `og:image`, et les champs `image`/`url` du JSON-LD)

@@ -25,7 +25,7 @@
   <meta name="description" content="ID'coiff, salon de coiffure mixte et barbier au 56 bd Pasteur à Amiens. Coupe femme, homme et enfant, couleur, mèches, balayage, taille de barbe et rasage. Prise de rendez-vous en ligne." />
   <meta name="keywords" content="coiffeur Amiens, salon de coiffure Amiens, barbier Amiens, coupe homme Amiens, coloration, balayage, boulevard Pasteur" />
   <meta name="author" content="ID'coiff" />
-  <meta name="theme-color" content="#2c2723" /><!-- doit refléter --color-primary (statique : non dérivable) -->
+  <meta name="theme-color" content="#0f0f0f" /><!-- doit refléter --color-primary : noir (statique, non dérivable) -->
   <!-- ⚠️ [À REMPLACER] avant mise en ligne : renseignez votre domaine réel dans
        TOUTES les URL « [VOTRE-DOMAINE] » (canonical, og:url, og:image, JSON-LD). -->
   <link rel="canonical" href="https://[VOTRE-DOMAINE].fr/" />
@@ -40,7 +40,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon minimaliste inline (ciseaux) : aucune requête externe -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c2723' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cline x1='20' y1='4' x2='8.12' y2='15.88'/%3E%3Cline x1='14.47' y1='14.48' x2='20' y2='20'/%3E%3Cline x1='8.12' y1='8.12' x2='12' y2='12'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a227' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Cline x1='20' y1='4' x2='8.12' y2='15.88'/%3E%3Cline x1='14.47' y1='14.48' x2='20' y2='20'/%3E%3Cline x1='8.12' y1='8.12' x2='12' y2='12'/%3E%3C/svg%3E" />
 
   <!--
     ===================== DONNÉES STRUCTURÉES (Schema.org · HairSalon) =====================
@@ -110,12 +110,12 @@
     @property --color-primary {
       syntax: '<color>';
       inherits: true;
-      initial-value: #2c2723; /* repli : brun-charbon chaud (aperçu) */
+      initial-value: #0f0f0f; /* NOIR — couleur principale ID'coiff */
     }
     @property --color-accent {
       syntax: '<color>';
       inherits: true;
-      initial-value: #b8934e; /* repli : or feutré (aperçu) */
+      initial-value: #c9a227; /* DORÉ — accent ID'coiff (repris du logo) */
     }
 
     :root {
@@ -125,8 +125,8 @@
          │  Tout le reste (fonds, textes, bordures, survols) en découle   │
          │  automatiquement via color-mix(). Ne touchez à rien d'autre.   │
          └──────────────────────────────────────────────────────────────┘ */
-      --color-primary: ; /* couleur principale de la marque */
-      --color-accent:  ; /* couleur d'accent : boutons, détails */
+      --color-primary: #0f0f0f; /* NOIR — couleur principale (logo ID'coiff) */
+      --color-accent:  #c9a227; /* DORÉ — accent : boutons, détails (logo ID'coiff) */
 
       /* ————————————————————————————————————————————————————————————————
          Ancrages neutres (ni marque, ni décor) servant aux mélanges.
@@ -348,6 +348,8 @@
       gap: var(--s3);
     }
     .brand { display: inline-flex; align-items: center; gap: 10px; }
+    .brand__logo { width: 52px; height: 52px; border-radius: 50%; object-fit: contain; display: block; flex: none; }
+    .brand__lockup { display: inline-flex; align-items: center; gap: 10px; }
     .brand__mark { width: 30px; height: 30px; color: var(--accent-ink); flex: none; }
     .brand__name {
       font-family: var(--font-display); font-size: 1.4rem; font-weight: 600;
@@ -794,12 +796,21 @@
   <header class="header" id="top">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="ID'coiff — accueil">
-        <!-- Marque : ciseaux (SVG inline) -->
-        <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
-          <line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
-        </svg>
-        <span class="brand__name">ID<span class="apo">'</span>coiff</span>
+        <!-- LOGO DU SALON — déposez « logo.png » (ou .svg) à la racine du projet.
+             Tant que le fichier est absent, le nom stylisé s'affiche à la place
+             (aucune image cassée). Une fois le logo présent, il remplace le nom. -->
+        <img class="brand__logo" src="logo.png"
+             alt="ID'coiff — salon de coiffure & barbier à Amiens"
+             width="52" height="52" decoding="async"
+             onload="this.nextElementSibling.style.display = 'none'"
+             onerror="this.style.display = 'none'" />
+        <span class="brand__lockup">
+          <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+            <line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
+          </svg>
+          <span class="brand__name">ID<span class="apo">'</span>coiff</span>
+        </span>
       </a>
 
       <nav class="nav" aria-label="Navigation principale">
@@ -1291,8 +1302,16 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a class="brand" href="#top" aria-label="ID'coiff — haut de page">
-            <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: color-mix(in srgb, var(--accent) 55%, var(--white))"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-            <span class="brand__name">ID'coiff</span>
+            <!-- Même logo « logo.png » que l'en-tête ; repli sur le nom stylisé -->
+            <img class="brand__logo" src="logo.png"
+                 alt="ID'coiff — salon de coiffure & barbier à Amiens"
+                 width="56" height="56" decoding="async"
+                 onload="this.nextElementSibling.style.display='none'"
+                 onerror="this.style.display='none'" />
+            <span class="brand__lockup">
+              <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: color-mix(in srgb, var(--accent) 55%, var(--white))"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+              <span class="brand__name">ID'coiff</span>
+            </span>
           </a>
           <p class="footer__tag">Salon de coiffure mixte &amp; barbier au cœur d'Amiens. Coupe, couleur, barbe — avec le sourire.</p>
           <div class="footer__social">

@@ -17,28 +17,28 @@ Tout se règle dans `index.html`. Cherchez les marqueurs entre crochets
 (`[ ... ]`) : ce sont les seuls éléments à remplacer.
 
 ### 1. Les 2 couleurs de la marque
-Actuellement réglées sur **noir + doré** (repris du logo ID'coiff). Pour les
-changer, éditez le bloc **« COULEURS DE LA MARQUE »** (`:root`) dans le `<style>` :
+La maquette est en **thème sombre** : **fond noir, texte et boutons dorés**
+(texte noir sur les boutons), repris du logo ID'coiff. Les 2 couleurs pilotes
+sont dans le bloc **« COULEURS DE LA MARQUE »** (`:root`) du `<style>` :
 
 ```css
---color-primary: #0f0f0f; /* NOIR  — couleur principale de la marque */
---color-accent:  #c9a227; /* DORÉ  — accent : boutons, détails */
+--color-primary: #0f0f0f; /* NOIR  — fond principal */
+--color-accent:  #c9a227; /* DORÉ  — texte, boutons, détails */
 ```
 
 **Tout le reste** — fonds, textes, bordures, survols, ombres — en découle
-automatiquement via `color-mix()`. Le rendu reste lisible que la couleur soit
-**claire ou foncée**.
+automatiquement via `color-mix()` (contrastes WCAG AA vérifiés). Le bloc de tokens
+juste en dessous (`--surface`, `--ink`, `--cta-*`…) définit le thème sombre ;
+pour repasser à un thème clair, il suffit d'inverser ce bloc.
 
 Si vous changez la couleur principale, mettez aussi à jour la balise
-`<meta name="theme-color">` (elle doit la refléter ; c'est la seule couleur « en
-dur », car elle n'est pas dérivable).
+`<meta name="theme-color">` (seule couleur « en dur », car non dérivable).
 
 ### 1 bis. Le logo
-Le logo s'affiche depuis un fichier **`logo.png`** (ou `.svg`) placé **à la racine**
-du projet, à côté de `index.html`. Il apparaît dans l'en-tête et le pied de page.
-**Tant que ce fichier est absent, le nom stylisé « ID'coiff » s'affiche à la place**
-(aucune image cassée). Déposez simplement votre `logo.png` pour qu'il apparaisse.
-Idéalement carré et détouré (fond transparent) : il est affiché en cercle.
+Le logo est **intégré directement dans `index.html`** (image encodée en base64
+dans la variable CSS `--logo`) : le fichier reste donc **100 % autonome**, sans
+aucune image externe. Il s'affiche **en cercle** dans l'en-tête et le pied de page.
+Pour changer de logo, remplacez l'URL `data:` de la variable `--logo`.
 
 ### 2. Le lien de réservation Planity
 Remplacez **toutes** les occurrences de `[LIEN PLANITY]` par l'URL Planity du salon
@@ -62,8 +62,8 @@ Remplacez les marqueurs `[À REMPLACER]`, `[Prénom]`, `[Votre nom]`, etc. :
 
 ## ✅ Checklist avant mise en ligne
 
-- [x] Couleurs réglées (noir + doré) — ajuster si besoin
-- [ ] Déposer le fichier `logo.png` à la racine du projet
+- [x] Thème noir & doré réglé — ajuster si besoin
+- [x] Logo intégré (base64 dans `index.html`)
 - [ ] Remplacer tous les `[LIEN PLANITY]`
 - [ ] Remplacer **toutes** les URL `[VOTRE-DOMAINE]` par le vrai domaine
       (`canonical`, `og:url`, `og:image`, et les champs `image`/`url` du JSON-LD)

@@ -760,13 +760,48 @@
        16. POINTS DE RUPTURE (mobile-first → tablette → desktop)
        ======================================================================== */
 
-    /* Petit mobile : la barre d'action apparaît, on réserve la place en bas */
+    /* ═══════════════ AJUSTEMENTS MOBILE (≤ 767px uniquement) ═══════════════ */
     @media (max-width: 767px) {
       .actionbar { display: flex; }
       /* Réserve la hauteur de la barre + l'encoche iPhone (safe-area) : le bas
          du footer n'est jamais masqué par la barre d'action collante. */
       body { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
       .nav, .header__cta { display: none; }        /* CTA principal → barre du bas */
+
+      /* En-tête : logo CENTRÉ et sans filet visible contre la hero */
+      .header__inner { justify-content: center; }
+      .header, .header.is-scrolled { border-bottom-color: transparent; }
+
+      /* Hero : rythme resserré + UNE seule action.
+         Le « Prendre rendez-vous » est retiré ici (il vit déjà, en permanence,
+         dans la barre d'action collante en bas) → plus de bouton en double. */
+      .hero__inner { padding-block: var(--s5); gap: var(--s5); }
+      .hero__actions { margin-top: var(--s4); }
+      .hero__actions .btn--primary { display: none; }
+      .hero__actions .btn--ghost { width: 100%; }
+      .hero__meta { margin-top: var(--s4); gap: var(--s1) var(--s3); }
+
+      /* Prestations : CARTES BLANCHES à texte foncé (lisibilité optimale sur le
+         fond noir). Le filet doré du haut et les touches dorées sont conservés. */
+      .service-card {
+        background: var(--white);
+        border-color: color-mix(in srgb, var(--black) 12%, var(--white));
+        border-top-color: var(--accent);
+      }
+      .service-card__title,
+      .service-card .price__name { color: color-mix(in srgb, var(--accent) 10%, var(--black)); }
+      .service-card .price__desc,
+      .service-card .price__value small { color: color-mix(in srgb, var(--black) 62%, var(--white)); }
+      .service-card .price__value { color: color-mix(in srgb, var(--accent) 45%, var(--black)); }
+      .service-card .service-card__head { border-bottom-color: color-mix(in srgb, var(--black) 12%, var(--white)); }
+      .service-card .price + .price { border-top-color: color-mix(in srgb, var(--black) 10%, var(--white)); }
+      .service-card .price__dots { border-bottom-color: color-mix(in srgb, var(--black) 24%, var(--white)); }
+      .service-card__icon,
+      .service-card .badge {
+        background: color-mix(in srgb, var(--accent) 15%, var(--white));
+        color: color-mix(in srgb, var(--accent) 45%, var(--black));
+      }
+      .service-card .badge { border-color: color-mix(in srgb, var(--accent) 38%, var(--white)); }
     }
 
     /* ≥ 600px : galerie et équipe sur 2 colonnes */
